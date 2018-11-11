@@ -11,20 +11,20 @@ pipeline {
           echo "Building package ..."
       }
     }
-  }
-  stage('Deploy Approval'){
-    steps {
-      input "Deploy to Production?"
+    stage('Deploy Approval'){
+      steps {
+        input "Deploy to Production?"
+      }
     }
-  }
-  stage('Deploy to Production') {
-    steps {
-      echo "Deploying to Production environment ..."
+    stage('Deploy to Production') {
+      steps {
+        echo "Deploying to Production environment ..."
+      }
     }
-  }
-  stage('Clean up') {
-    steps {
-      echo "Have a nice day!"
+    stage('Clean up') {
+      steps {
+        echo "Have a nice day!"
+      }
     }
   }
 }
