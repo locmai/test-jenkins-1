@@ -35,7 +35,7 @@ pipeline {
       steps {
         build(job: "test-jenkins-2/master", propagate: true, wait: true,
           parameters: [
-            string(name: 'TestingType', value: "SMOKE")
+            string(name: 'TestingType', value: "smoke")
           ] )
       }
     }
