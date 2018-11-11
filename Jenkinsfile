@@ -1,44 +1,46 @@
 pipeline {
   agent {
-      docker {
-          image 'maven:3.5.4-jdk-10-slim'
-          args '-v $HOME/.m2:/root/.m2'
-      }
+    docker {
+      image 'maven:3.5.4-jdk-10-slim'
+      args '-v $HOME/.m2:/root/.m2'
+    }
+
   }
   stages {
     stage('Build Project') {
       steps {
-          echo "Building project ..."
+        echo 'Building project ...'
       }
     }
     stage('Code Analysis') {
       steps {
-          echo "Scanning with Sonar ..."
+        echo 'Scanning with Sonar ...'
       }
     }
     stage('Integration Test') {
       steps {
-          echo "Start running tests ..."
+        echo 'Start running tests ...'
       }
     }
     stage('Publish Dev Packages') {
       steps {
-          echo "Publishing Dev Packages ..."
+        echo 'Publishing Dev Packages ...'
       }
     }
-    stage('Deploy Approval'){
+    stage('Deploy Approval') {
       steps {
-        input "Deploy to Testing environment?"
+        input 'Deploy to Testing environment?'
       }
     }
     stage('Trigger Deploy job') {
+      agent any
       steps {
-        build job: 'test-jenkins-2'
+        build(job: 'test-jenkins-2', wait: true)
       }
     }
     stage('Clean up') {
       steps {
-        echo "Have a nice day!"
+        echo 'Have a nice day!'
       }
     }
   }
