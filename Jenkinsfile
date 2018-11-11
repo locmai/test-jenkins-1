@@ -4,7 +4,9 @@ pipeline {
       image 'maven:3.5.4-jdk-10-slim'
       args '-v $HOME/.m2:/root/.m2'
     }
-
+  }
+  when {
+            branch 'master'
   }
   stages {
     stage('Build Project') {
