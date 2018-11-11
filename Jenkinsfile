@@ -5,9 +5,6 @@ pipeline {
       args '-v $HOME/.m2:/root/.m2'
     }
   }
-  when {
-            branch 'master'
-  }
   stages {
     stage('Build Project') {
       steps {
