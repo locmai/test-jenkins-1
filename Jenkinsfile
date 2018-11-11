@@ -33,7 +33,6 @@ pipeline {
       }
     }
     stage('Trigger Deploy job') {
-      agent any
       steps {
         build(job: "test-jenkins-2/master", propagate: true, wait: true)
       }
