@@ -6,19 +6,35 @@ pipeline {
       }
   }
   stages {
-    stage('Build Package') {
+    stage('Build Project') {
       steps {
-          echo "Building package ..."
+          echo "Building project ..."
       }
     }
+    stage('Code Analysis') {
+      steps {
+          echo "Scanning with Sonar ..."
+      }
+    }
+    stage('Integration Test') {
+      steps {
+          echo "Start running tests ..."
+      }
+    }
+    stage('Publish Dev Packages') {
+      steps {
+          echo "Publishing Dev Packages ..."
+      }
+    }
+    stage('')
     stage('Deploy Approval'){
       steps {
-        input "Deploy to Production?"
+        input "Deploy to Testing environment?"
       }
     }
-    stage('Deploy to Production') {
+    stage('Trigger Deploy job') {
       steps {
-        echo "Deploying to Production environment ..."
+        echo "Triggering Deploy job ... "
       }
     }
     stage('Clean up') {
