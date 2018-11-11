@@ -33,7 +33,7 @@ pipeline {
     }
     stage('Trigger Deploy job') {
       steps {
-        echo "Triggering Deploy job ... "
+        build job: 'test-jenkins-2'
       }
     }
     stage('Clean up') {
