@@ -33,7 +33,10 @@ pipeline {
     }
     stage('Trigger Deploy job') {
       steps {
-        build(job: "test-jenkins-2/master", propagate: true, wait: true)
+        build(job: "test-jenkins-2/master", propagate: true, wait: true,
+          parameters: [
+            string(name: 'TestingType', value: "Smoke")
+          ] )
       }
     }
     stage('Clean up') {
